@@ -175,7 +175,7 @@
         const pinPopupClose = document.getElementById('pin-popup-close');
 
         // DEFAULT PIN: Silakan ubah angka ini jika ingin PIN lain
-        const SECRET_PIN = "1903";
+        const SECRET_PIN = "2814";
 
         let pinAttempt = 0;
         let popupTimeout = null;
@@ -399,13 +399,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     // Hapus class lama
                     modalIframe.classList.remove('iframe-spotify', 'iframe-youtube', 'iframe-facebook');
 
-                    // Deteksi platform untuk penyesuaian rasio (16:9 untuk YouTube, Kotak untuk Spotify, 9:16 untuk Facebook)
-                    if (embedUrl.includes('youtube.com') || embedUrl.includes('youtu.be')) {
-                        modalIframe.classList.add('iframe-youtube');
-                    } else if (embedUrl.includes('spotify.com')) {
+                    // Deteksi platform untuk penyesuaian rasio (16:9 untuk YouTube/Series Drama, Kotak untuk Spotify, 9:16 untuk Facebook)
+                    if (embedUrl.includes('spotify.com')) {
                         modalIframe.classList.add('iframe-spotify');
                     } else if (embedUrl.includes('facebook.com')) {
                         modalIframe.classList.add('iframe-facebook');
+                    } else {
+                        modalIframe.classList.add('iframe-youtube');
                     }
 
                     const customCaption = this.getAttribute('data-caption');
@@ -1336,7 +1336,7 @@ function putarKeduaVideoBersamaan() {
             // Jika browser menahan autoplay, pastikan muted lalu coba lagi
             v.muted = true;
             updateVideoMuteUI(v);
-            v.play().catch(() => {});
+            v.play().catch(() => { });
         });
     });
 }
@@ -1356,7 +1356,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Klik pada area video untuk toggle play/pause (atau melanjutkan keduanya)
         video.addEventListener('click', () => {
             if (video.paused) {
-                video.play().catch(() => {});
+                video.play().catch(() => { });
             } else {
                 video.pause();
             }
@@ -1411,7 +1411,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Unmute video yang dipilih & pastikan berputar
                 video.muted = false;
                 if (video.paused) {
-                    video.play().catch(() => {});
+                    video.play().catch(() => { });
                 }
                 updateVideoMuteUI(video);
                 sinkronBacksoundDenganVideo();
